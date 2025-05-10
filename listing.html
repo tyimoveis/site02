@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Imóveis - Ente Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Urbanist', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        paper: '#f5f5f0',
+                        ink: '#1a1a1a',
+                    },
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#1E40AF',
+                        paper: '#f5f5f0',
+                        ink: '#1a1a1a',
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f5f5f0;
+        }
+
+        .property-card {
+            transition: all 0.3s ease;
+            background: white;
+            border: 1px solid #e5e5df;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #e5e5df;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .newspaper-title {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.05em;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #3B82F6, #1E40AF);
+        }
+
+        .category-card {
+            transition: all 0.3s ease;
+            background: white;
+            border: 1px solid #e5e5df;
+        }
+
+        .category-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.1);
+        }
+
+        @media (max-width: 640px) {
+            .search-form {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        #featured-properties .property-card,
+        #new-properties .property-card {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            background-color: #ffffff;
+        }
+
+        #featured-properties .property-card h3,
+        #new-properties .property-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #222;
+            font-weight: bold;
+        }
+
+        #featured-properties .property-card p,
+        #new-properties .property-card p {
+            font-size: 0.9rem;
+            color: #444;
+            margin-bottom: 0.25rem;
+        }
+
+        #featured-properties .property-card .price,
+        #new-properties .property-card .price {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #3B82F6;
+            margin-top: 0.5rem;
+        }
+
+        .category-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            border-radius: 0.25rem;
+            background-color: #f9f9f9;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .category-card:hover {
+            background-color: #ffffff;
+            transform: translateY(-4px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.07);
+        }
+
+        .category-card .icon {
+            font-size: 3rem;
+            margin-bottom: 0.75rem;
+            color: #3B82F6;
+        }
+
+        .category-card h3 {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #222;
+        }
+
+        .search-form button {
+            padding-top: 0.8rem;
+            padding-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .search-form input,
+        .search-form select {
+            padding-top: 0.7rem;
+            padding-bottom: 0.7rem;
+            font-size: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .search-form {
+                grid-template-columns: repeat(5, 1fr);
+            }
+
+            .search-form button {
+                grid-column: 5 / 5;
+            }
+        }
+
+        .property-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.25rem 0.25rem 0 0;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body class="font-sans">
+    <header class="sticky top-0 z-50 bg-white/95 shadow-sm border-b border-gray-200">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-serif newspaper-title text-ink">ENTE HOME</a>
+            <nav class="flex items-center space-x-4">
+                <a href="login-imobiliaria.html"
+                    class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded-lg text-sm sm:text-base transition-colors duration-300 flex items-center">
+                    Área da Imobiliária
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7" />
+                    </svg>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="py-12 bg-paper">
+        <div class="container mx-auto px-4">
+            <div class="mb-8 p-6 bg-white rounded-lg shadow-md search-card">
+                <form id="filter-form" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    <select name="type"
+                        class="p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink">
+                        <option value="">Tipo</option>
+                        <option value="venda">Venda</option>
+                        <option value="aluguel">Aluguel</option>
+                    </select>
+                    <select name="category"
+                        class="p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink">
+                        <option value="">Categoria</option>
+                        <option value="apartamentos">Apartamentos</option>
+                        <option value="casas">Casas</option>
+                        <option value="comerciais">Comerciais</option>
+                        <option value="terrenos">Terrenos</option>
+                    </select>
+                    <input type="text" name="neighborhood" placeholder="Bairro"
+                        class="p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink">
+                    <input type="number" name="min_price" placeholder="Preço Mínimo"
+                        class="p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink">
+                    <input type="number" name="max_price" placeholder="Preço Máximo"
+                        class="p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink">
+                    <select name="bedrooms"
+                        class="p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink">
+                        <option value="">Quartos</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4+</option>
+                    </select>
+                    <select name="bathrooms"
+                        class="p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink">
+                        <option value="">Banheiros</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3+</option>
+                    </select>
+                    <select name="garage"
+                        class="p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink">
+                        <option value="">Garagem</option>
+                        <option value="1">1 vaga</option>
+                        <option value="2">2 vagas</option>
+                        <option value="3">3+ vagas</option>
+                    </select>
+                    <button type="submit"
+                        class="bg-primary hover:bg-secondary text-white rounded-lg p-3 sm:col-span-2 lg:col-span-1">
+                        Filtrar
+                    </button>
+                </form>
+            </div>
+
+            <div id="property-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
