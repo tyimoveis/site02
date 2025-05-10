@@ -23,9 +23,7 @@
                 <p class="mt-2 text-sm text-gray-600">Acesse sua conta para gerenciar leads e integrações</p>
             </div>
 
-            <form class="mt-8 space-y-6" action="dashboard-imobiliaria.html" method="GET">
-                <input type="hidden" name="email" value="teste@imobiliaria.com">
-                <input type="hidden" name="password" value="teste123">
+            <form class="mt-8 space-y-6" action="dashboard-imobiliaria.html" method="POST" id="login-form">
                 <div class="rounded-md shadow-sm space-y-4">
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700">E-mail</label>
@@ -58,7 +56,8 @@
                         Acessar
                     </button>
                 </div>
-                </form>
+            </form>
+
             <div class="text-center text-sm">
                 <p class="text-gray-600">Ainda não tem conta? <a href="cadastro-imobiliaria.html"
                         class="text-primary hover:text-secondary">Cadastre sua imobiliária</a></p>
@@ -71,6 +70,43 @@
             <p>© 2023 Ente Home. Todos os direitos reservados.</p>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            event.preventDefault();  // Impede o envio padrão do formulário
+
+            // *** LOGIN DE TESTE (REMOVER EM PRODUÇÃO!) ***
+            let email = document.getElementById('email').value;
+            let password = document.getElementById('password').value;
+
+            if (email === 'teste@imobiliaria.com' && password === 'teste123') {
+                window.location.href = 'dashboard-imobiliaria.html';  // Redireciona
+                return; // Importante para sair da função
+            }
+            // *** FIM DO LOGIN DE TESTE ***
+
+            // *** AQUI VAI O CÓDIGO PARA AUTENTICAÇÃO REAL (AJAX/fetch para o backend) ***
+            // Exemplo (INCOMPLETO - precisa de backend):
+            /*
+            fetch('/seu-endpoint-de-login', {
+                method: 'POST',
+                body: new URLSearchParams(new FormData(this)),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = 'dashboard-imobiliaria.html';
+                } else {
+                    alert('Login falhou: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Erro ao tentar logar.');
+            });
+            */
+        });
+    </script>
 </body>
 
 </html>
