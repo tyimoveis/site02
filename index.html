@@ -3,10 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#3B82F6">
+  <meta name="description" content="Ente Home - A melhor plataforma de imóveis em Londrina e região">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Ente Home - Imóveis em Londrina</title>
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  
+  <!-- Favicon e ícones para PWA -->
+  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+  
+  <!-- CSS e Fontes -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  
   <script>
     tailwind.config = {
       theme: {
@@ -24,7 +38,19 @@
         }
       }
     }
+    
+    // Registro do Service Worker para PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then(registration => {
+          console.log('ServiceWorker registrado com sucesso: ', registration.scope);
+        }).catch(err => {
+          console.log('Falha no registro do ServiceWorker: ', err);
+        });
+      });
+    }
   </script>
+  
   <style>
     body {
       background-color: #f5f5f0;
@@ -78,6 +104,16 @@
       box-shadow: 0 8px 20px rgba(59, 130, 246, 0.1);
     }
 
+    /* Estilo para PWA em tela cheia */
+    @media all and (display-mode: standalone) {
+      header {
+        padding-top: env(safe-area-inset-top);
+      }
+      body {
+        background-color: white;
+      }
+    }
+
     @media (max-width: 640px) {
       .search-form {
         grid-template-columns: 1fr;
@@ -101,7 +137,7 @@
     </div>
   </header>
 
-  <!-- Hero com Busca -->
+  <!-- Hero com Busca Atualizada -->
   <section class="relative py-16 md:py-24 bg-ink text-white">
     <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560185008-5b62b1b5e4c4')] bg-cover bg-center opacity-30"></div>
     <div class="container mx-auto px-4 relative z-10">
@@ -110,10 +146,10 @@
         <p class="text-lg md:text-xl mb-8 font-light">As melhores ofertas imobiliárias em Londrina e região</p>
       </div>
       
-      <!-- Filtros Otimizados -->
-      <div class="max-w-4xl mx-auto mt-8">
+      <!-- Filtros Otimizados com Preço -->
+      <div class="max-w-5xl mx-auto mt-8">
         <div class="search-card rounded-lg p-6">
-          <form id="search-form" class="grid search-form grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <form id="search-form" class="grid search-form grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             <select name="type" class="p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink">
               <option value="">Tipo de Negócio</option>
               <option value="venda">Venda</option>
@@ -130,7 +166,26 @@
             
             <input type="text" name="neighborhood" placeholder="Bairro ou Região" class="p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink">
             
-            <button type="submit" class="bg-primary hover:bg-secondary text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center transition-colors duration-300">
+            <!-- Campo de Preço Atualizado -->
+            <div class="relative">
+              <select name="price_range" class="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink appearance-none">
+                <option value="">Faixa de Preço</option>
+                <option value="0-150000">Até R$ 150 mil</option>
+                <option value="150000-300000">R$ 150-300 mil</option>
+                <option value="300000-500000">R$ 300-500 mil</option>
+                <option value="500000-1000000">R$ 500 mil - 1 mi</option>
+                <option value="1000000-">Acima de 1 milhão</option>
+                <option value="0-1000">Até R$ 1.000/mês</option>
+                <option value="1000-2000">R$ 1-2 mil/mês</option>
+                <option value="2000-3500">R$ 2-3,5 mil/mês</option>
+                <option value="3500-">Acima de R$ 3,5 mil/mês</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+              </div>
+            </div>
+            
+            <button type="submit" class="bg-primary hover:bg-secondary text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center transition-colors duration-300 col-span-1 sm:col-span-2 lg:col-span-1">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
@@ -226,6 +281,24 @@
       </div>
     </div>
   </footer>
+
+  <!-- Scripts para PWA -->
+  <script>
+    // Verifica se o PWA foi instalado
+    window.addEventListener('appinstalled', (evt) => {
+      console.log('Aplicativo instalado com sucesso');
+    });
+
+    // Mostra prompt de instalação quando apropriado
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      // Você pode mostrar um botão de instalação aqui se quiser
+      console.log('PWA pode ser instalado');
+    });
+  </script>
 
   <script src="assets/js/main.js"></script>
 </body>
