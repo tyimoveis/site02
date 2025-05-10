@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Imóvel - Ente Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-gray-100">
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-3xl font-bold text-blue-600">ENTE HOME</a>
+      <nav class="hidden md:flex space-x-8">
+        <a href="index.html" class="text-gray-700 hover:text-blue-600">Início</a>
+        <a href="listing.html" class="text-gray-700 hover:text-blue-600">Imóveis</a>
+        <a href="upload-form.html" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">Cadastrar</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Detalhes do Imóvel -->
+  <section class="container mx-auto px-6 py-16">
+    <div id="property-details" class="bg-white rounded-xl shadow-md overflow-hidden">
+      <!-- Conteúdo será carregado aqui pelo JavaScript -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-6 text-center">
+      <p>© 2024 Ente Home. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const id = parseInt(params.get('id'));
+      
+      if (!id) return;
+      
+      // Simulação - na prática buscaria do banco de dados
+      const property = {
+        id: 1,
+        title: "Apartamento Premium no Centro",
+        price: 450000,
+        type: "venda",
+        neighborhood: "Centro",
+        description: "Excelente apartamento com 2 quartos (1 suíte), sala ampla, cozinha planejada e varanda gourmet. Prédio com piscina, academia e portaria 24h.",
+        images: [
+          "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1600566752225-220f5a5d40c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
+        ]
+      };
+      
+      // Renderiza os detalhes
+      const container = document.getElementById('property-details');
+      container.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="p-6">
+            <img src="${property.images[0]}" alt="${property.title}" class="w-full h-96 object-cover rounded-lg mb-4" id="main-image">
+            <div class="flex gap-4">
+              ${property.images.slice(1).map(img => `
+                <img src="${img}" alt="${property.title}" class="w-24 h-24 object-cover rounded-lg cursor-pointer hover:opacity-80 thumb-image">
+              `).join('')}
+            </div>
+          </div>
+          <div class="p-6">
+            <h1 class="text-3xl font-bold mb-4">${property.title}</h1>
+            <p class="text-2xl text-blue-600 font-bold mb-4">R$ ${property.price.toLocaleString()}</p>
+            <div class="flex items-center gap-4 mb-6">
+              <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">${property.type === 'venda' ? 'Venda' : 'Aluguel'}</span>
+              <span class="text-gray-700"><i class="fas fa-map-marker-alt"></i> ${property.neighborhood}</span>
+            </div>
+            <div class="mb-8">
+              <h3 class="text-xl font-semibold mb-2">Descrição</h3>
+              <p class="text-gray-600">${property.description}</p>
+            </div>
+            <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
+              Entrar em Contato
+            </button>
+          </div>
+        </div>
+      `;
+      
+      // Configura galeria de imagens
+      const mainImg = document.getElementById('main-image');
+      const thumbs = document.querySelectorAll('.thumb-image');
+      
+      thumbs.forEach(thumb => {
+        thumb.addEventListener('click', () => {
+          mainImg.src = thumb.src;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

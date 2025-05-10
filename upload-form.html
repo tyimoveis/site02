@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastrar Imóvel - Ente Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-gray-100">
+  <!-- Header -->
+  <header class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-3xl font-bold text-blue-600">ENTE HOME</a>
+      <nav class="hidden md:flex space-x-8">
+        <a href="index.html" class="text-gray-700 hover:text-blue-600">Início</a>
+        <a href="listing.html" class="text-gray-700 hover:text-blue-600">Imóveis</a>
+        <a href="upload-form.html" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">Cadastrar</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Formulário -->
+  <section class="container mx-auto px-6 py-16 max-w-3xl">
+    <div class="bg-white rounded-xl shadow-md p-8">
+      <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Cadastrar Imóvel</h1>
+      
+      <form id="property-form" class="space-y-6">
+        <div>
+          <label class="block text-gray-700 font-medium mb-2">Título do Imóvel</label>
+          <input type="text" name="title" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Tipo</label>
+            <select name="type" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
+              <option value="">Selecione</option>
+              <option value="venda">Venda</option>
+              <option value="aluguel">Aluguel</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Categoria</label>
+            <select name="category" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
+              <option value="">Selecione</option>
+              <option value="apartamento">Apartamento</option>
+              <option value="casa">Casa</option>
+              <option value="comercial">Comercial</option>
+              <option value="terreno">Terreno</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Preço (R$)</label>
+            <input type="number" name="price" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
+          </div>
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Bairro</label>
+            <input type="text" name="neighborhood" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
+          </div>
+        </div>
+        
+        <div>
+          <label class="block text-gray-700 font-medium mb-2">Descrição</label>
+          <textarea name="description" rows="4" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Imagem Principal</label>
+            <input type="file" name="main-image" accept="image/*" required class="w-full">
+          </div>
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Imagens Adicionais</label>
+            <input type="file" name="additional-images" accept="image/*" multiple class="w-full">
+          </div>
+        </div>
+        
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg mt-6">
+          Cadastrar Imóvel
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-6 text-center">
+      <p>© 2024 Ente Home. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('property-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Imóvel cadastrado com sucesso! (Simulação)');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
