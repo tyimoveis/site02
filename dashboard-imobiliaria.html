@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Ente Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans bg-gray-50">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/95 shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold text-primary">ENTE HOME</a>
+      <nav class="flex items-center space-x-4">
+        <a href="#" class="text-gray-700 hover:text-primary">Olá, Imobiliária Exemplo</a>
+        <a href="#" class="text-gray-700 hover:text-primary">Sair</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Dashboard -->
+  <div class="container mx-auto px-4 py-8">
+    <div class="flex flex-col md:flex-row gap-6">
+      <!-- Sidebar -->
+      <aside class="w-full md:w-64 bg-white p-6 rounded-lg shadow">
+        <h3 class="text-lg font-bold mb-4">Menu</h3>
+        <nav class="space-y-2">
+          <a href="#" class="block p-2 text-primary font-medium bg-blue-50 rounded">Visão Geral</a>
+          <a href="#" class="block p-2 text-gray-700 hover:text-primary">Leads</a>
+          <a href="#" class="block p-2 text-gray-700 hover:text-primary">Integração XML</a>
+          <a href="#" class="block p-2 text-gray-700 hover:text-primary">Meus Imóveis</a>
+          <a href="upload-form.html" class="block p-2 text-gray-700 hover:text-primary">Cadastrar Imóvel</a>
+          <a href="#" class="block p-2 text-gray-700 hover:text-primary">Configurações</a>
+        </nav>
+      </aside>
+
+      <!-- Conteúdo Principal -->
+      <main class="flex-1">
+        <div class="bg-white p-6 rounded-lg shadow mb-6">
+          <h2 class="text-2xl font-bold mb-4">Visão Geral</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="bg-blue-50 p-4 rounded-lg">
+              <h3 class="font-medium text-gray-700">Leads este mês</h3>
+              <p class="text-2xl font-bold">24</p>
+            </div>
+            <div class="bg-green-50 p-4 rounded-lg">
+              <h3 class="font-medium text-gray-700">Imóveis ativos</h3>
+              <p class="text-2xl font-bold">15</p>
+            </div>
+            <div class="bg-yellow-50 p-4 rounded-lg">
+              <h3 class="font-medium text-gray-700">Novos contatos</h3>
+              <p class="text-2xl font-bold">8</p>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-bold mb-4">Integração XML</h3>
+          <div class="bg-gray-50 p-4 rounded-lg mb-4">
+            <p class="mb-4">Configure a integração com seu sistema imobiliário:</p>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700">URL do XML</label>
+                <input type="text" class="mt-1 p-2 w-full border border-gray-300 rounded-md">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700">Frequência de atualização</label>
+                <select class="mt-1 p-2 w-full border border-gray-300 rounded-md">
+                  <option>Diária</option>
+                  <option>Horária</option>
+                  <option>Manual</option>
+                </select>
+              </div>
+              <button class="bg-primary text-white px-4 py-2 rounded-md hover:bg-secondary">Salvar Configurações</button>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-bold mb-4 mt-6">Últimos Leads</h3>
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nome</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Contato</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Interesse</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Data</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <!-- Dados dos leads seriam populados aqui -->
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">João Silva</td>
+                  <td class="px-6 py-4 whitespace-nowrap">joao@email.com</td>
+                  <td class="px-6 py-4 whitespace-nowrap">Apartamento 2 quartos</td>
+                  <td class="px-6 py-4 whitespace-nowrap">10/05/2023</td>
+                </tr>
+                <!-- Mais leads... -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2023 Ente Home. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>
