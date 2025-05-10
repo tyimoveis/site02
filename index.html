@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +15,10 @@
                     fontFamily: {
                         sans: ['Urbanist', 'sans-serif'],
                         serif: ['Playfair Display', 'serif'],
-                        paper: '#f5f5f0', /* Variável para cor de fundo */
-                        ink: '#1a1a1a',   /* Variável para cor de texto */
+                        paper: '#f5f5f0',
+                        /* Variável para cor de fundo */
+                        ink: '#1a1a1a',
+                        /* Variável para cor de texto */
                     },
                     colors: {
                         primary: '#3B82F6',
@@ -36,31 +39,35 @@
             transition: all 0.3s ease;
             background: white;
             border: 1px solid #e5e5df;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            display: flex; /* Adiciona flexbox ao card */
-            flex-direction: column; /* Coloca os elementos em coluna */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            display: flex;
+            /* Adiciona flexbox ao card */
+            flex-direction: column;
+            /* Coloca os elementos em coluna */
         }
+
         .property-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
         .search-card {
-            background: rgba(255,255,255,0.95);
+            background: rgba(255, 255, 255, 0.95);
             border: 1px solid #e5e5df;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .newspaper-title {
             font-family: 'Playfair Display', serif;
             letter-spacing: -0.05em;
-            text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
         }
 
         .section-title {
             position: relative;
             display: inline-block;
         }
+
         .section-title:after {
             content: '';
             position: absolute;
@@ -76,6 +83,7 @@
             background: white;
             border: 1px solid #e5e5df;
         }
+
         .category-card:hover {
             transform: scale(1.02);
             box-shadow: 0 8px 20px rgba(59, 130, 246, 0.1);
@@ -153,21 +161,25 @@
             font-weight: bold;
             color: #222;
         }
+
         .search-form button {
             padding-top: 0.8rem;
             padding-bottom: 0.8rem;
             font-size: 1.1rem;
         }
+
         .search-form input,
         .search-form select {
             padding-top: 0.7rem;
             padding-bottom: 0.7rem;
             font-size: 1rem;
         }
+
         @media (min-width: 768px) {
             .search-form {
                 grid-template-columns: repeat(5, 1fr);
             }
+
             .search-form button {
                 grid-column: 5 / 5;
             }
@@ -175,22 +187,30 @@
 
         /* Estilos para a imagem do card */
         .property-card img {
-            width: 100%; /* Garante que a imagem preencha a largura do card */
-            height: 200px; /* Altura fixa para todas as imagens */
-            object-fit: cover; /* Recorta a imagem para preencher o espaço, mantendo a proporção */
-            border-radius: 0.25rem 0.25rem 0 0; /* Arredonda apenas os cantos superiores */
-            margin-bottom: 1rem; /* Espaçamento entre a imagem e o texto */
+            width: 100%;
+            /* Garante que a imagem preencha a largura do card */
+            height: 200px;
+            /* Altura fixa para todas as imagens */
+            object-fit: cover;
+            /* Recorta a imagem para preencher o espaço, mantendo a proporção */
+            border-radius: 0.25rem 0.25rem 0 0;
+            /* Arredonda apenas os cantos superiores */
+            margin-bottom: 1rem;
+            /* Espaçamento entre a imagem e o texto */
         }
     </style>
 </head>
+
 <body class="font-sans">
     <header class="sticky top-0 z-50 bg-white/95 shadow-sm border-b border-gray-200">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <a href="index.html" class="text-3xl font-serif newspaper-title text-ink">ENTE HOME</a>
             <nav class="flex items-center space-x-4">
-                <a href="login-imobiliaria.html" class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded-lg text-sm sm:text-base transition-colors duration-300 flex items-center">
+                <a href="login-imobiliaria.html"
+                    class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded-lg text-sm sm:text-base transition-colors duration-300 flex items-center">
                     Área da Imobiliária
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7" />
                     </svg>
                 </a>
@@ -204,33 +224,36 @@
                 <h1 class="text-3xl md:text-5xl font-serif newspaper-title mb-6">Encontre seu imóvel perfeito</h1>
                 <p class="text-lg md:text-xl mb-8 font-light">As melhores ofertas imobiliárias em Londrina e região</p>
             </div>
-
             <div class="max-w-4xl mx-auto mt-8">
                 <div class="search-card rounded-lg p-6">
                     <form id="search-form" class="grid search-form grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                        <select name="type" class="p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink">
+                        <select name="type"
+                            class="p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink">
                             <option value="">Tipo de Negócio</option>
                             <option value="venda">Venda</option>
                             <option value="aluguel">Aluguel</option>
                         </select>
-
-                        <select name="category" class="p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink">
+                        <select name="category"
+                            class="p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink">
                             <option value="">Categoria</option>
                             <option value="apartamentos">Apartamentos</option>
                             <option value="casas">Casas</option>
                             <option value="comerciais">Comerciais</option>
                             <option value="terrenos">Terrenos</option>
                         </select>
-
-                        <input type="text" name="neighborhood" placeholder="Bairro ou Região" class="p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink">
-
-                        <input type="number" name="min_price" placeholder="Valor Mínimo" class="p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink">
-
-                        <input type="number" name="max_price" placeholder="Valor Máximo" class="p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink">
-
-                        <button type="submit" class="bg-primary hover:bg-secondary text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center transition-colors duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        <input type="text" name="neighborhood" placeholder="Bairro ou Região"
+                            class="p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink">
+                        <input type="number" name="min_price" placeholder="Valor Mínimo"
+                            class="p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink">
+                        <input type="number" name="max_price" placeholder="Valor Máximo"
+                            class="p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white text-ink">
+                        <button type="submit"
+                            class="bg-primary hover:bg-secondary text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center transition-colors duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                    clip-rule="evenodd" />
                             </svg>
                             Buscar
                         </button>
@@ -238,117 +261,48 @@
                 </div>
             </div>
         </div>
+        <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-70"></div>
     </section>
 
-    <section class="container mx-auto px-4 py-12">
-        <div class="flex justify-between items-center mb-8">
-            <h2 class="text-2xl md:text-3xl font-bold text-ink section-title">Novos Anúncios</h2>
-            <a href="listing.html" class="text-primary hover:text-secondary font-medium">Ver todos →</a>
-        </div>
-
-        <div id="new-properties" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-            <div class="property-card">
-                <img src="https://via.placeholder.com/400x200?text=Residencial+Flores" alt="Residencial das Flores">
-                <h3>Edifício Residencial das Flores</h3>
-                <p>Tipo: Apartamento - Venda</p>
-                <p>Bairro: Centro</p>
-                <p>Quartos: 3</p>
-                <p>Área: 90 m²</p>
+    <section class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl font-serif section-title text-ink mb-8">Destaques</h2>
+        <div id="featured-properties" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             </div>
-            <div class="property-card">
-                <img src="https://via.placeholder.com/400x200?text=Casa+de+Campo+Estrela" alt="Casa de Campo Estrela">
-                <h3>Casa de Campo Estrela</h3>
-                <p>Tipo: Casa - Venda</p>
-                <p>Bairro: Jardim Europa</p>
-                <p>Quartos: 4</p>
-                 <p>Área: 150 m²</p>
-            </div>
-            <div class="property-card">
-                <img src="https://via.placeholder.com/400x200?text=Escritorio+Avenida" alt="Escritório Comercial Avenida">
-                <h3>Escritório Comercial Avenida</h3>
-                <p>Tipo: Comercial - Locação</p>
-                <p>Bairro: Gleba Palhano</p>
-                <p>Quartos: 2</p>
-                 <p>Área: 200 m²</p>
-            </div>
-            <div class="property-card">
-                <img src="https://via.placeholder.com/400x200?text=Terreno+Residencial+Sol" alt="Terreno Residencial Sol">
-                <h3>Terreno Residencial Sol</h3>
-                <p>Tipo: Terreno - Venda</p>
-                <p>Bairro: Cabral</p>
-                <p>Quartos: 0</p>
-                 <p>Área: 300 m²</p>
-            </div>
-            <div class="property-card">
-                <img src="https://via.placeholder.com/400x200?text=Apartamento+Vista+Bella" alt="Apartamento Vista Bella">
-                <h3>Apartamento Vista Bella</h3>
-                <p>Tipo: Apartamento - Locação</p>
-                <p>Bairro: Palhano</p>
-                <p>Quartos: 2</p>
-                <p>Área: 75 m²</p>
-            </div>
-        </div>
     </section>
 
-    <section class="py-12 bg-white border-y border-gray-200">
+    <section class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl font-serif section-title text-ink mb-8">Todos os Imóveis</h2>
+        <div id="all-properties" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            </div>
+    </section>
+
+    <section class="bg-gray-50 py-16">
         <div class="container mx-auto px-4">
-            <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 text-ink section-title mx-auto">Explore por Categoria</h2>
+            <h2 class="text-3xl font-serif section-title text-ink mb-8">Categorias</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                <a href="#" class="category-card hover:shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-primary mb-4" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Casas</h3>
+                    <p class="text-gray-600">Encontre a casa dos seus sonhos com a gente.</p>
+                </a>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-                <a href="listing.html?category=apartamentos" class="category-card">
-                    <div class="icon">🏢</div>
-                    <h3>Apartamentos</h3>
+                <a href="#" class="category-card hover:shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-primary mb-4" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <polyline points="16 6 12 11 8 6"></polyline>
+                        <polyline points="16 18 12 13 8 18"></polyline>
+                    </svg>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Apartamentos</h3>
+                    <p class="text-gray-600">Apartamentos modernos e bem localizados.</p>
                 </a>
-                <a href="listing.html?category=casas" class="category-card">
-                    <div class="icon">🏠</div>
-                    <h3>Casas</h3>
-                </a>
-                <a href="listing.html?category=comerciais" class="category-card">
-                    <div class="icon">🏬</div>
-                    <h3>Comerciais</h3>
-                </a>
-                <a href="listing.html?category=terrenos" class="category-card">
-                    <div class="icon">📐</div>
-                    <h3>Terrenos</h3>
-                </a>
-            </div>
-        </div>
-    </section>
 
-    <footer class="bg-ink text-white py-12 border-t border-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-xl font-serif newspaper-title mb-4">ENTE HOME</h3>
-                    <p class="text-gray-300">A melhor plataforma de imóveis de Londrina e região.</p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Links</h3>
-                    <ul class="space-y-2 text-gray-300">
-                        <li><a href="index.html" class="hover:text-primary">Início</a></li>
-                        <li><a href="listing.html" class="hover:text-primary">Imóveis</a></li>
-                        <li><a href="login-imobiliaria.html" class="hover:text-primary">Área da Imobiliária</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Contato</h3>
-                    <p class="text-gray-300">contato@entehome.com</p>
-                    <p class="text-gray-300">(43) 3333-4444</p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Redes Sociais</h3>
-                    <div class="flex space-x-4 text-gray-300">
-                        <a href="#" class="hover:text-primary">Instagram</a>
-                        <a href="#" class="hover:text-primary">Facebook</a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>© 2023 Ente Home. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="assets/js/main.js"></script>
-</body>
-</html>
+                <a href="#" class="category-card hover:shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-primary mb-4" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 18v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v2"></path>
+                        <polyline points="22
